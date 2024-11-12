@@ -1,8 +1,8 @@
-import { Tabs } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { View, Text, StyleSheet } from 'react-native';
-import colors from '@/constants/Colors';
-import { textStyles } from '@/constants/TextStyles';
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { View, Text, StyleSheet } from "react-native";
+import colors from "@/constants/Colors";
+import { textStyles } from "@/constants/TextStyles";
 
 export default function TabsLayout() {
   return (
@@ -12,37 +12,40 @@ export default function TabsLayout() {
           let iconName: keyof typeof Ionicons.glyphMap;
 
           switch (route.name) {
-            case 'Map':
-              iconName = focused ? 'map' : 'map-outline';
+            case "Map":
+              iconName = focused ? "map" : "map-outline";
               break;
-            case 'TripPlanner':
-              iconName = focused ? 'navigate-circle' : 'navigate-circle-outline';
+            case "TripPlanner":
+              iconName = focused
+                ? "navigate-circle"
+                : "navigate-circle-outline";
               break;
-            case 'Vehicle':
-              iconName = focused ? 'car-sport' : 'car-sport-outline';
+            case "Vehicle":
+              iconName = focused ? "car-sport" : "car-sport-outline";
               break;
-            case 'Profile':
-              iconName = focused ? 'person-circle' : 'person-circle-outline';
+            case "Profile":
+              iconName = focused ? "person-circle" : "person-circle-outline";
               break;
             default:
-              iconName = 'ellipse-outline';
+              iconName = "ellipse-outline";
               break;
           }
 
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={28} color={color} />;
         },
+        tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: 'gray',
+        tabBarInactiveTintColor: "gray",
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#f8f8f8',
+          backgroundColor: "#fff",
           borderTopWidth: 0,
           elevation: 5,
-          height: 60,
+          height: 64,
           paddingBottom: 5,
         },
         tabBarLabelStyle: {
-          ...textStyles.label_small,
+          ...textStyles.label_medium,
         },
         tabBarIconStyle: {
           marginTop: 5,
@@ -52,25 +55,25 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="Map"
         options={{
-          title: 'Mapa',
+          title: "Mapa",
         }}
       />
       <Tabs.Screen
         name="TripPlanner"
         options={{
-          title: 'Viagens',
+          title: "Viagens",
         }}
       />
       <Tabs.Screen
         name="Vehicle"
         options={{
-          title: 'Veículos',
+          title: "Veículos",
         }}
       />
       <Tabs.Screen
         name="Profile"
         options={{
-          title: 'Perfil',
+          title: "Perfil",
         }}
       />
     </Tabs>
