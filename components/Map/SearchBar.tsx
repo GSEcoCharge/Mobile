@@ -4,20 +4,21 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import * as Crypto from "expo-crypto";
 import MapView from "react-native-maps";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { textStyles } from "@/constants/TextStyles";
+import textStyles from "@/constants/TextStyles";
+import { LocationObjectCoords } from "expo-location";
 
 interface SearchBarProps {
   mapRef: React.RefObject<MapView>;
+  location: LocationObjectCoords;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ mapRef }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ mapRef, location }) => {
   const [sessionToken, setSessionToken] = useState<string>("");
   const [chosenPlace, setChosenPlace] = useState<any | null>(null);
   const [placeholder, setPlaceholder] = useState<string>("Pesquise aqui");
   const [placeholderColor, setPlaceholderColor] = useState<string>("#555");
   const [autocompleteKey, setAutocompleteKey] = useState<string>("initial");
 
-  // Reference for GooglePlacesAutocomplete to access clear method
   const searchRef = useRef<any>(null);
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ mapRef }) => {
       <GooglePlacesAutocomplete
         key={autocompleteKey}
         ref={searchRef}
+        minLength={3}
         renderRightButton={() =>
           chosenPlace ? (
             <Pressable style={styles.iconContainer} onPress={clearInput}>
@@ -64,6 +66,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ mapRef }) => {
         onPress={(data, details = null) => {
           if (details) {
             setChosenPlace(details);
+            console.log(data);
+            console.log(details);
+
             const { lat, lng } = details.geometry.location;
             mapRef.current?.animateToRegion({
               latitude: lat,
@@ -79,6 +84,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ mapRef }) => {
           language: "pt-BR",
           sessiontoken: sessionToken,
           components: "country:br",
+          location: `${location.latitude},${location.longitude}`,
+          radius: 10000,
+        }}
+        GooglePlacesDetailsQuery={{
+          fields: "geometry",
         }}
         styles={{
           container: styles.inputContainer,

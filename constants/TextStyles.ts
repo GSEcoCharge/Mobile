@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const textStyles = StyleSheet.create({
+const textStyles = StyleSheet.create({
   headline_large: {
     fontFamily: "WorkSans_500Medium",
     fontSize: 32,
@@ -59,7 +59,7 @@ export const textStyles = StyleSheet.create({
     fontFamily: "WorkSans_400Regular",
     fontSize: 16,
     lineHeight: 24.0,
-    letterSpacing: 0,
+    letterSpacing: 0.5,
   },
   redacted_large: {
     fontFamily: "'Redacted Script'",
@@ -92,21 +92,23 @@ export const textStyles = StyleSheet.create({
     letterSpacing: 0,
   },
   display_large: {
-    fontFamily: "WorkSans_400Regular",
+    fontFamily: "WorkSans_600SemiBold",
     fontSize: 64,
     lineHeight: 72.0,
     letterSpacing: -0.25,
   },
   display_medium: {
-    fontFamily: "WorkSans_400Regular",
+    fontFamily: "WorkSans_600SemiBold",
     fontSize: 48,
     lineHeight: 56.0,
     letterSpacing: 0,
   },
   display_small: {
-    fontFamily: "WorkSans_400Regular",
+    fontFamily: "WorkSans_600SemiBold",
     fontSize: 40,
     lineHeight: 48.0,
     letterSpacing: 0,
   },
 });
+
+export default textStyles;

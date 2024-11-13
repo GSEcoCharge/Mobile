@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import "react-native-get-random-values";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import colors from "@/constants/Colors";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -55,7 +56,15 @@ function RootLayoutNav() {
   return (
     <SafeAreaProvider>
       <ThemeProvider value={DefaultTheme}>
-        <Stack>
+        <Stack
+          screenOptions={{
+            contentStyle: { backgroundColor: colors.white },
+          }}
+        >
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="register" options={{ headerShown: false }} />
+          <Stack.Screen name="login" options={{ headerShown: false }} />
+          <Stack.Screen name="resetPassword" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         </Stack>
       </ThemeProvider>

@@ -1,3 +1,4 @@
+import colors from "@/constants/Colors";
 import { StyleSheet, View } from "react-native";
 
 export default function TripPlannerScreen() {
@@ -9,6 +10,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.white,
   },
   title: {
     fontSize: 20,
