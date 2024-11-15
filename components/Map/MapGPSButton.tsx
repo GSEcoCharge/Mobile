@@ -11,7 +11,7 @@ interface GPSButtonProps {
   >;
 }
 
-const GPSButton: React.FC<GPSButtonProps> = ({ mapRef, setLocation }) => {
+const MapGPSButton: React.FC<GPSButtonProps> = ({ mapRef, setLocation }) => {
   const [GPSColor, setGPSColor] = useState("#ea4335");
   const [bgColor, setBgColor] = useState("#fff");
 
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GPSButton;
+export default MapGPSButton;

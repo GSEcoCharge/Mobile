@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import MapView, { Marker, Region } from "react-native-maps";
 import { getLocation } from "@/components/Map/locationUtils";
-import LoadingScreen from "@/components/utils/screens/LoadingScreen";
-import GPSButton from "@/components/Map/GPSButton";
-import SearchBar from "@/components/Map/SearchBar";
+import LoadingScreen from "@/components/Utils/screens/LoadingScreen";
+import MapGPSButton from "@/components/Map/MapGPSButton";
+import MapSearchBar from "@/components/Map/MapSearchBar";
 import * as Location from "expo-location";
-import evStationsData from "@/components/utils/api/ev_stations.json";
+import evStationsData from "@/components/Utils/api/ev_stations.json";
 
 interface LocationCoords {
   latitude: number;
@@ -139,8 +139,8 @@ const MapScreen: React.FC = () => {
             />
           ))}
       </MapView>
-      <SearchBar mapRef={mapRef} location={location} />
-      <GPSButton mapRef={mapRef} setLocation={setLocation} />
+      <MapSearchBar mapRef={mapRef} location={location} />
+      <MapGPSButton mapRef={mapRef} setLocation={setLocation} />
     </View>
   );
 };

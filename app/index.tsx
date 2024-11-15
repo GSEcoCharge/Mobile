@@ -1,6 +1,6 @@
-import PictorialIcon from "@/assets/icons/pictorial";
-import EletricCarHomeIMG from "@/assets/icons/eletric-car-home";
-import EletricCarHomeDetailIMG from "@/assets/icons/eletric-car-home-detail";
+import PictorialIcon from "@/assets/svg/pictorial";
+import EletricCarHomeIMG from "@/assets/svg/eletric-car-home";
+import EletricCarHomeDetailIMG from "@/assets/svg/eletric-car-home-detail";
 import colors from "@/constants/Colors";
 import textStyles from "@/constants/TextStyles";
 import { Link } from "expo-router";
@@ -87,6 +87,10 @@ export default function HomeScreen() {
           <Text style={{ color: colors.primary }}>Termos de Uso</Text> e{" "}
           <Text style={{ color: colors.primary }}>Política de Privacidade</Text>
         </Text>
+        {/* TODO: REMOVE DEBUG */}
+        <Link href={"/(tabs)/map"} style={{ color: "red" }}>
+          Debug
+        </Link>
       </View>
       <View style={styles.backgroundContainer}>
         {/* <EletricCarHomeDetailIMG width={460} height={230} /> */}

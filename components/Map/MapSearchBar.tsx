@@ -12,7 +12,7 @@ interface SearchBarProps {
   location: LocationObjectCoords;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ mapRef, location }) => {
+const MapSearchBar: React.FC<SearchBarProps> = ({ mapRef, location }) => {
   const [sessionToken, setSessionToken] = useState<string>("");
   const [chosenPlace, setChosenPlace] = useState<any | null>(null);
   const [placeholder, setPlaceholder] = useState<string>("Pesquise aqui");
@@ -111,7 +111,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ mapRef, location }) => {
           placeholderTextColor: placeholderColor,
         }}
         onFail={(error) => console.error(error)}
-        debounce={200}
+        debounce={400}
       />
     </View>
   );
@@ -166,4 +166,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchBar;
+export default MapSearchBar;

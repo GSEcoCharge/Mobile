@@ -1,24 +1,83 @@
 import colors from "@/constants/Colors";
-import { StyleSheet, View } from "react-native";
+import textStyles from "@/constants/TextStyles";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { auth } from "@/firebaseConfig";
+import { router } from "expo-router";
+import EletricCarRepairIMG from "@/assets/svg/eletric-car-repair";
 
-export default function TripPlannerScreen() {
-  return <View style={styles.container}></View>;
+export default function TabOneScreen() {
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      router.replace("/(tabs)/map");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+      <View style={styles.container}>
+        <View style={styles.img}>
+          <EletricCarRepairIMG />
+        </View>
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={styles.title}>Desculpas</Text>
+          <Text style={styles.title}>Em manunteção</Text>
+          <Text
+            style={[
+              textStyles.label_large,
+              {
+                color: colors.subtleDark,
+                textAlign: "center",
+                marginTop: 12,
+                marginHorizontal: 20,
+              },
+            ]}
+          >
+            Perdão, a página está em manutenção Tente novamente mais tarde
+          </Text>
+        </View>
+        <Pressable
+          style={{
+            padding: 12,
+            backgroundColor: colors.primary,
+            borderRadius: 10,
+          }}
+          onPress={handleLogout}
+        >
+          <Text style={[textStyles.headline_small, { color: "white" }]}>
+            VOLTAR AO MAPA
+          </Text>
+        </Pressable>
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
     backgroundColor: colors.white,
+    justifyContent: "center",
+    marginHorizontal: 24,
+    gap: 40,
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "WorkSans_600SemiBold",
+    fontSize: 30,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+  img: {
+    width: 264,
+    height: 264,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

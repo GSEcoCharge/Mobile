@@ -1,5 +1,7 @@
-import EletricCarResetIMG from "@/assets/icons/eletric-car-reset";
-import ImagePlaceholder from "@/assets/icons/imagePlaceholder";
+import EletricCarResetIMG from "@/assets/svg/eletric-car-reset";
+import ImagePlaceholder from "@/assets/svg/imagePlaceholder";
+import AuthActionButton from "@/components/Auth/AuthActionButton";
+import AuthInputField from "@/components/Auth/AuthInputField";
 import colors from "@/constants/Colors";
 import textStyles from "@/constants/TextStyles";
 import { auth } from "@/firebaseConfig";
@@ -37,7 +39,7 @@ export default function ResetPassword() {
       );
     });
 
-  const handleResetPassword = async (email: any) => {
+  const handleResetPassword = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
       Keyboard.dismiss();
@@ -61,63 +63,22 @@ export default function ResetPassword() {
           }}
         >
           <Text style={styles.title}>Esqueceu sua Senha?</Text>
-          <Text
-            style={[
-              textStyles.label_large,
-              {
-                color: colors.subtleDark,
-                textAlign: "center",
-                marginTop: 12,
-                marginHorizontal: 20,
-              },
-            ]}
-          >
+          <Text style={styles.description}>
             Por favor, insira seu e-mail para as instruções de recuperação de
             senha.
           </Text>
         </View>
-        <View style={{ gap: 8 }}>
-          <Text style={textStyles.label_medium}>Email</Text>
-          <TextInput
-            style={styles.input}
-            keyboardType="email-address"
-            onChangeText={setEmail}
-            value={email}
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 32,
-          }}
-        >
-          <Pressable
-            style={{
-              width: 320,
-              height: 48,
-              borderRadius: 8,
-              backgroundColor: colors.primary,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            onPress={() => handleResetPassword(email)}
-          >
-            <Text style={[textStyles.headline_small, { color: "white" }]}>
-              Enviar
-            </Text>
-          </Pressable>
+        <AuthInputField
+          label="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+        />
+        <View style={styles.actionButtonsContainer}>
+          <AuthActionButton text="Enviar" onPress={handleResetPassword} />
           <View>
             <Pressable onPress={() => router.back()}>
-              <Text
-                style={[
-                  textStyles.headline_small,
-                  { color: colors.primary, fontSize: 18 },
-                ]}
-              >
-                Voltar
-              </Text>
+              <Text style={styles.backButton}>Voltar</Text>
             </Pressable>
           </View>
         </View>
@@ -140,19 +101,28 @@ const styles = StyleSheet.create({
     fontFamily: "WorkSans_600SemiBold",
     fontSize: 30,
   },
+  description: {
+    ...textStyles.label_large,
+    color: colors.subtleDark,
+    textAlign: "center",
+    marginHorizontal: 20,
+    marginTop: 12,
+  },
   img: {
     width: 290.4,
     height: 264,
     justifyContent: "center",
     alignItems: "center",
   },
-  input: {
-    width: 320,
-    height: 48,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: colors.subtleLight,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+  actionButtonsContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 32,
+  },
+  backButton: {
+    ...textStyles.headline_small,
+    color: colors.primary,
+    fontSize: 18,
   },
 });

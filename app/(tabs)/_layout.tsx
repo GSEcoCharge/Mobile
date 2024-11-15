@@ -11,18 +11,18 @@ export default function TabsLayout() {
           let iconName: keyof typeof Ionicons.glyphMap;
 
           switch (route.name) {
-            case "Map":
+            case "map":
               iconName = focused ? "map" : "map-outline";
               break;
-            case "TripPlanner":
+            case "tripPlanner":
               iconName = focused
                 ? "navigate-circle"
                 : "navigate-circle-outline";
               break;
-            case "Vehicle":
+            case "vehicle":
               iconName = focused ? "car-sport" : "car-sport-outline";
               break;
-            case "Profile":
+            case "profile":
               iconName = focused ? "person-circle" : "person-circle-outline";
               break;
             default:
@@ -52,25 +52,25 @@ export default function TabsLayout() {
       })}
     >
       <Tabs.Screen
-        name="Map"
+        name="map"
         options={{
           title: "Mapa",
         }}
       />
       <Tabs.Screen
-        name="TripPlanner"
+        name="tripPlanner"
         options={{
           title: "Viagens",
         }}
       />
       <Tabs.Screen
-        name="Vehicle"
+        name="vehicle"
         options={{
           title: "Veículos",
         }}
       />
       <Tabs.Screen
-        name="Profile"
+        name="profile"
         options={{
           title: "Perfil",
         }}
