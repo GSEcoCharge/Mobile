@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 
 interface VehicleTypeSelectorProps {
   selectedType: string;
@@ -46,22 +46,22 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     height: 136,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: colors.subtleLight,
+    borderColor: COLORS.subtleLight,
     justifyContent: "center",
     alignItems: "center",
   },
   cardSelected: {
-    borderColor: colors.primary,
-    backgroundColor: colors.surface,
+    borderColor: COLORS.primary,
+    backgroundColor: COLORS.surface,
   },
   text: {
-    ...textStyles.label_large,
-    color: colors.subtleDark,
+    ...TEXT_STYLES.label_large,
+    color: COLORS.subtleDark,
   },
   textSelected: {
-    color: colors.primary,
+    color: COLORS.primary,
   },
 });

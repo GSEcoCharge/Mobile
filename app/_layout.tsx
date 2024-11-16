@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import "react-native-get-random-values";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import colors from "@/constants/Colors";
+import COLORS from "@/constants/Colors";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -58,7 +58,7 @@ function RootLayoutNav() {
       <ThemeProvider value={DefaultTheme}>
         <Stack
           screenOptions={{
-            contentStyle: { backgroundColor: colors.white },
+            contentStyle: { backgroundColor: COLORS.white },
           }}
         >
           <Stack.Screen name="index" options={{ headerShown: false }} />

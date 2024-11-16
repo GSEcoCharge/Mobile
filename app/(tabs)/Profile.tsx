@@ -1,5 +1,5 @@
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
   },
   title: {
     fontSize: 20,
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 12,
-    backgroundColor: colors.primary,
+    backgroundColor: COLORS.primary,
     borderRadius: 10,
   },
   buttonText: {
     color: "#fff",
-    ...textStyles.headline_small,
+    ...TEXT_STYLES.headline_small,
   },
 });

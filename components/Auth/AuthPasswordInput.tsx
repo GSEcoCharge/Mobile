@@ -2,7 +2,7 @@ import React from "react";
 import { View, TextInput, Pressable, StyleSheet } from "react-native";
 import HideEye from "@/assets/svg/hide_eye";
 import ShowEye from "@/assets/svg/show_eye";
-import colors from "@/constants/Colors";
+import COLORS from "@/constants/COLORS";
 
 interface PasswordInputProps {
   value: string;
@@ -20,7 +20,7 @@ export default function AuthPasswordInput({
   return (
     <View style={styles.container}>
       <TextInput
-        selectionColor={colors.primary}
+        selectionColor={COLORS.primary}
         value={value}
         onChangeText={onChangeText}
         style={styles.input}
@@ -28,9 +28,9 @@ export default function AuthPasswordInput({
       />
       <Pressable style={styles.icon} onPress={onTogglePassword}>
         {showPassword ? (
-          <HideEye color={colors.subtleDark} />
+          <HideEye color={COLORS.subtleDark} />
         ) : (
-          <ShowEye color={colors.subtleDark} />
+          <ShowEye color={COLORS.subtleDark} />
         )}
       </Pressable>
     </View>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: colors.subtleLight,
+    borderColor: COLORS.subtleLight,
     paddingHorizontal: 16,
     paddingVertical: 12,
   },

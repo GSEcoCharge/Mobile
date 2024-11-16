@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 
 interface AuthActionButtonProps {
   text: string;
@@ -13,7 +13,7 @@ export default function AuthActionButton({ text, onPress, style }: AuthActionBut
   return (
     <Pressable onPress={onPress}>
       <View style={[styles.button, style]}>
-        <Text style={[textStyles.label_large, { color: colors.white }]}>{text}</Text>
+        <Text style={[TEXT_STYLES.label_large, { color: COLORS.white }]}>{text}</Text>
       </View>
     </Pressable>
   );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     width: 320,
     height: 48,
     borderRadius: 8,
-    backgroundColor: colors.primary,
+    backgroundColor: COLORS.primary,
     justifyContent: "center",
     alignItems: "center",
   },

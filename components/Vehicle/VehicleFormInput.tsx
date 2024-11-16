@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet, KeyboardTypeOptions } from "react-native";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 
 interface FormInputProps {
   label: string;
@@ -30,15 +30,15 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   label: {
-    ...textStyles.label_large,
-    color: colors.normal,
+    ...TEXT_STYLES.label_large,
+    color: COLORS.normal,
     fontFamily: "WorkSans_500Medium",
   },
   input: {
     height: 48,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: colors.subtleLight,
+    borderColor: COLORS.subtleLight,
     paddingHorizontal: 16,
     paddingVertical: 12,
   },

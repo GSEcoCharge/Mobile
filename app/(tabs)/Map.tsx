@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Image, StyleSheet, View } from "react-native";
-import MapView, { Marker, Region } from "react-native-maps";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import MapView, { Callout, Marker, Region } from "react-native-maps";
 import { getLocation } from "@/components/Map/locationUtils";
 import LoadingScreen from "@/components/Utils/screens/LoadingScreen";
 import MapGPSButton from "@/components/Map/MapGPSButton";
 import MapSearchBar from "@/components/Map/MapSearchBar";
 import * as Location from "expo-location";
 import evStationsData from "@/components/Utils/api/ev_stations.json";
+import MapCalloutBox from "@/components/Map/MapCallout";
 
 interface LocationCoords {
   latitude: number;
@@ -43,6 +44,9 @@ const MapScreen: React.FC = () => {
     useState<Location.LocationObjectCoords | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [evStations, setEvStations] = useState<EVStation[]>([]);
+  const [selectedStation, setSelectedStation] = useState<EVStation | null>(
+    null
+  );
   const mapRef = useRef<MapView>(null);
 
   useEffect(() => {
@@ -133,14 +137,20 @@ const MapScreen: React.FC = () => {
                 latitude: station.location.latitude,
                 longitude: station.location.longitude,
               }}
-              title={station.displayName.text}
-              description={station.formattedAddress}
               image={require("@/assets/images/marker.png")}
+              onPress={() => setSelectedStation(station)}
             />
           ))}
       </MapView>
       <MapSearchBar mapRef={mapRef} location={location} />
       <MapGPSButton mapRef={mapRef} setLocation={setLocation} />
+      {selectedStation && (
+        <MapCalloutBox
+          station={selectedStation}
+          onClose={() => setSelectedStation(null)}
+          userLocation={location}
+        />
+      )}
     </View>
   );
 };

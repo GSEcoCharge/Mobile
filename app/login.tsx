@@ -1,5 +1,5 @@
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -26,6 +26,7 @@ export default function Login() {
     }
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      router.dismissAll();
       router.replace("/(tabs)/map");
     } catch (error) {
       alert("Erro ao autenticar");
@@ -52,9 +53,10 @@ export default function Login() {
                 label="Email"
                 value={email}
                 onChangeText={setEmail}
+                keyboardType="email-address"
               />
               <View style={{ gap: 8 }}>
-                <Text style={textStyles.label_medium}>Senha</Text>
+                <Text style={TEXT_STYLES.label_medium}>Senha</Text>
                 <AuthPasswordInput
                   value={password}
                   onChangeText={setPassword}
@@ -64,7 +66,7 @@ export default function Login() {
                 <View style={{ alignSelf: "flex-start" }}>
                   <Link href={"/resetPassword"} style={{ paddingVertical: 8 }}>
                     <Text
-                      style={[textStyles.label_small, { color: "#7C7D81" }]}
+                      style={[TEXT_STYLES.label_small, { color: "#7C7D81" }]}
                     >
                       Esqueceu a senha?
                     </Text>
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "WorkSans_600SemiBold",
-    color: colors.normal,
+    color: COLORS.normal,
     fontSize: 40,
     lineHeight: 48,
   },

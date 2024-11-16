@@ -4,7 +4,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import * as Crypto from "expo-crypto";
 import MapView from "react-native-maps";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import textStyles from "@/constants/TextStyles";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { LocationObjectCoords } from "expo-location";
 
 interface SearchBarProps {
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   input: {
-    ...textStyles.body_large,
+    ...TEXT_STYLES.body_large,
     color: "#555",
     height: "100%",
     flex: 1,

@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 
 export default function TabsLayout() {
   return (
@@ -33,7 +33,7 @@ export default function TabsLayout() {
           return <Ionicons name={iconName} size={28} color={color} />;
         },
         tabBarHideOnKeyboard: true,
-        tabBarActiveTintColor: colors.primary,
+        tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: "gray",
         headerShown: false,
         tabBarStyle: {
@@ -44,7 +44,7 @@ export default function TabsLayout() {
           paddingBottom: 5,
         },
         tabBarLabelStyle: {
-          ...textStyles.label_medium,
+          ...TEXT_STYLES.label_medium,
         },
         tabBarIconStyle: {
           marginTop: 5,

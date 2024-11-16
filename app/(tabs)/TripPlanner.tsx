@@ -1,5 +1,5 @@
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { auth } from "@/firebaseConfig";
@@ -17,7 +17,7 @@ export default function TabOneScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={styles.container}>
         <View style={styles.img}>
           <EletricCarRepairIMG />
@@ -32,9 +32,9 @@ export default function TabOneScreen() {
           <Text style={styles.title}>Em manunteção</Text>
           <Text
             style={[
-              textStyles.label_large,
+              TEXT_STYLES.label_large,
               {
-                color: colors.subtleDark,
+                color: COLORS.subtleDark,
                 textAlign: "center",
                 marginTop: 12,
                 marginHorizontal: 20,
@@ -47,12 +47,12 @@ export default function TabOneScreen() {
         <Pressable
           style={{
             padding: 12,
-            backgroundColor: colors.primary,
+            backgroundColor: COLORS.primary,
             borderRadius: 10,
           }}
           onPress={handleLogout}
         >
-          <Text style={[textStyles.headline_small, { color: "white" }]}>
+          <Text style={[TEXT_STYLES.headline_small, { color: "white" }]}>
             VOLTAR AO MAPA
           </Text>
         </Pressable>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     justifyContent: "center",
     marginHorizontal: 24,
     gap: 40,

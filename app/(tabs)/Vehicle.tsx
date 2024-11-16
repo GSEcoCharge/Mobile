@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ScrollView, View, StyleSheet, Text } from "react-native";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import VehicleTypeSelector from "@/components/Vehicle/VehicleTypeSelector";
 import FormInput from "@/components/Vehicle/VehicleFormInput";
 import ActionButton from "@/components/Vehicle/VehicleActionButton";
@@ -25,7 +25,7 @@ export default function VehicleScreen() {
       keyboardShouldPersistTaps="handled"
     >
       <View style={styles.container}>
-        <Text style={textStyles.headline_small}>Adicionar novo veículo</Text>
+        <Text style={TEXT_STYLES.headline_small}>Adicionar novo veículo</Text>
         <VehicleTypeSelector
           selectedType={selectedType}
           onSelect={setSelectedType}
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 72,
     paddingHorizontal: 16,
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     gap: 16,
   },
   actionContainer: {

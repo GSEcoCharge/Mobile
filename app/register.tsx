@@ -1,4 +1,4 @@
-import colors from "@/constants/Colors";
+import COLORS from "@/constants/COLORS";
 import { router } from "expo-router";
 import { useState } from "react";
 import {
@@ -15,7 +15,7 @@ import EletricCarRegisterIMG from "@/assets/svg/eletric-car-register";
 import AuthPasswordInput from "@/components/Auth/AuthPasswordInput";
 import AuthInputField from "@/components/Auth/AuthInputField";
 import AuthActionButton from "@/components/Auth/AuthActionButton";
-import textStyles from "@/constants/TextStyles";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 
 export default function Register() {
   const [nome, setNome] = useState("");
@@ -90,9 +90,10 @@ export default function Register() {
                 label="Email"
                 value={email}
                 onChangeText={setEmail}
+                keyboardType="email-address"
               />
               <View style={{ gap: 8 }}>
-                <Text style={textStyles.label_medium}>Senha</Text>
+                <Text style={TEXT_STYLES.label_medium}>Senha</Text>
                 <AuthPasswordInput
                   value={password}
                   onChangeText={setPassword}
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "WorkSans_600SemiBold",
-    color: colors.normal,
+    color: COLORS.normal,
     fontSize: 40,
     lineHeight: 48,
   },

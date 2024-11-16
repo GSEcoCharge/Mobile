@@ -1,8 +1,8 @@
 import PictorialIcon from "@/assets/svg/pictorial";
 import EletricCarHomeIMG from "@/assets/svg/eletric-car-home";
 import EletricCarHomeDetailIMG from "@/assets/svg/eletric-car-home-detail";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { Link } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,17 +15,17 @@ export default function HomeScreen() {
           <View style={{ gap: 24, alignItems: "center" }}>
             <PictorialIcon width={304} height={144} />
             <Text
-              style={[textStyles.display_medium, { color: colors.primary }]}
+              style={[TEXT_STYLES.display_medium, { color: COLORS.primary }]}
             >
               ECOCHARGE
             </Text>
           </View>
           <Text
             style={[
-              textStyles.body_large,
+              TEXT_STYLES.body_large,
               {
                 fontFamily: "WorkSans_500Medium",
-                color: colors.normal,
+                color: COLORS.normal,
                 textAlign: "center",
               },
             ]}
@@ -35,11 +35,10 @@ export default function HomeScreen() {
           </Text>
         </View>
         <View style={{ alignItems: "center", gap: 24 }}>
-          {/* <Link href={"/(tabs)/Map"}> */}
           <Link href={"/register"}>
             <View
               style={{
-                backgroundColor: colors.primary,
+                backgroundColor: COLORS.primary,
                 paddingVertical: 16,
                 borderRadius: 16,
                 width: 320,
@@ -47,8 +46,8 @@ export default function HomeScreen() {
             >
               <Text
                 style={[
-                  textStyles.label_large,
-                  { color: colors.white, textAlign: "center" },
+                  TEXT_STYLES.label_large,
+                  { color: COLORS.white, textAlign: "center" },
                 ]}
               >
                 REGISTRE-SE
@@ -58,9 +57,9 @@ export default function HomeScreen() {
           <Link href={"/login"}>
             <View
               style={{
-                backgroundColor: colors.white,
+                backgroundColor: COLORS.white,
                 borderWidth: 1,
-                borderColor: colors.primary,
+                borderColor: COLORS.primary,
                 paddingVertical: 16,
                 borderRadius: 16,
                 width: 320,
@@ -68,8 +67,8 @@ export default function HomeScreen() {
             >
               <Text
                 style={[
-                  textStyles.label_large,
-                  { color: colors.black, textAlign: "center" },
+                  TEXT_STYLES.label_large,
+                  { color: COLORS.black, textAlign: "center" },
                 ]}
               >
                 LOGIN
@@ -79,21 +78,20 @@ export default function HomeScreen() {
         </View>
         <Text
           style={[
-            textStyles.label_small,
-            { color: colors.subtleDark, textAlign: "center", marginTop: -16 },
+            TEXT_STYLES.label_small,
+            { color: COLORS.subtleDark, textAlign: "center", marginTop: -16 },
           ]}
         >
           Ao criar sua conta, você concorda com nossos{" "}
-          <Text style={{ color: colors.primary }}>Termos de Uso</Text> e{" "}
-          <Text style={{ color: colors.primary }}>Política de Privacidade</Text>
+          <Text style={{ color: COLORS.primary }}>Termos de Uso</Text> e{" "}
+          <Text style={{ color: COLORS.primary }}>Política de Privacidade</Text>
         </Text>
         {/* TODO: REMOVE DEBUG */}
-        <Link href={"/(tabs)/map"} style={{ color: "red" }}>
+        <Link href={"/(tabs)/map"} style={{ color: "red" }}> 
           Debug
         </Link>
       </View>
       <View style={styles.backgroundContainer}>
-        {/* <EletricCarHomeDetailIMG width={460} height={230} /> */}
         <EletricCarHomeIMG width={320} height={168} />
       </View>
     </SafeAreaView>

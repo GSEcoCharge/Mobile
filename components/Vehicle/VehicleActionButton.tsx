@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 
 interface ActionButtonProps {
   text: string;
@@ -20,7 +20,7 @@ export default function ActionButton({ text, onPress, isPrimary }: ActionButtonP
     >
       <Text
         style={[
-          textStyles.label_medium,
+          TEXT_STYLES.label_medium,
           isPrimary ? styles.primaryText : styles.secondaryText,
         ]}
       >
@@ -38,19 +38,19 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   primary: {
-    backgroundColor: colors.primary,
+    backgroundColor: COLORS.primary,
   },
   secondary: {
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     borderWidth: 1,
-    borderColor: colors.primary,
+    borderColor: COLORS.primary,
   },
   primaryText: {
-    color: colors.white,
+    color: COLORS.white,
     textAlign: "center",
   },
   secondaryText: {
-    color: colors.primary,
+    color: COLORS.primary,
     textAlign: "center",
   },
 });

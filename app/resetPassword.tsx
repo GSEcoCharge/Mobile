@@ -2,8 +2,8 @@ import EletricCarResetIMG from "@/assets/svg/eletric-car-reset";
 import ImagePlaceholder from "@/assets/svg/imagePlaceholder";
 import AuthActionButton from "@/components/Auth/AuthActionButton";
 import AuthInputField from "@/components/Auth/AuthInputField";
-import colors from "@/constants/Colors";
-import textStyles from "@/constants/TextStyles";
+import COLORS from "@/constants/COLORS";
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { auth } from "@/firebaseConfig";
 import { router } from "expo-router";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -51,7 +51,7 @@ export default function ResetPassword() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={styles.container}>
         <View style={styles.img}>
           <EletricCarResetIMG />
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     // justifyContent: "center",
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     marginHorizontal: 24,
     marginTop: 72,
     gap: 40,
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   description: {
-    ...textStyles.label_large,
-    color: colors.subtleDark,
+    ...TEXT_STYLES.label_large,
+    color: COLORS.subtleDark,
     textAlign: "center",
     marginHorizontal: 20,
     marginTop: 12,
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
     gap: 32,
   },
   backButton: {
-    ...textStyles.headline_small,
-    color: colors.primary,
+    ...TEXT_STYLES.headline_small,
+    color: COLORS.primary,
     fontSize: 18,
   },
 });
