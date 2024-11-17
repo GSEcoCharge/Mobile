@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   plugItem: {
-    backgroundColor: "#ececec",
+    backgroundColor: COLORS.separator,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 8,

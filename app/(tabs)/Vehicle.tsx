@@ -20,6 +20,7 @@ interface Vehicle {
   type: string;
   brand: string;
   model: string;
+  plugs: string[];
   licensePlate?: string;
   batteryCapacity: number;
   totalRange: number;
@@ -49,6 +50,7 @@ export default function VehicleScreen() {
         type: doc.data().type,
         brand: doc.data().brand,
         model: doc.data().model,
+        plugs: doc.data().plugs,
         licensePlate: doc.data().licensePlate,
         batteryCapacity: doc.data().batteryCapacity,
         totalRange: doc.data().totalRange,
@@ -82,7 +84,7 @@ export default function VehicleScreen() {
   if (showAddVehicleScreen || vehicles.length === 0) {
     return (
       <VehicleFormScreen
-        goBack={() => {
+        returnToVehicles={() => {
           setShowAddVehicleScreen(false);
           setVehicleToEdit(undefined);
           fetchVehicles();
@@ -133,6 +135,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: 16,
     backgroundColor: COLORS.white,
+    gap: 4,
   },
   header: {
     ...TEXT_STYLES.headline_small,

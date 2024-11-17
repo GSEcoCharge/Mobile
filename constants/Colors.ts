@@ -9,6 +9,7 @@ const COLORS = {
   subtleDark: "#61646B",
   normal: "#19191B",
   error: "#FF4D4D",
+  separator: "#ECECEC",
 };
 
 export default COLORS;

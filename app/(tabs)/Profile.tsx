@@ -1,6 +1,6 @@
 import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
 
@@ -9,6 +9,7 @@ export default function ProfileScreen() {
     const auth = getAuth();
     try {
       await signOut(auth);
+      router.replace("/");
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -16,11 +17,9 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Link push href="/" asChild>
-        <Pressable style={styles.button} onPress={handleLogout}>
-          <Text style={styles.buttonText}>Logout</Text>
-        </Pressable>
-      </Link>
+      <Pressable style={styles.button} onPress={handleLogout}>
+        <Text style={styles.buttonText}>Logout</Text>
+      </Pressable>
     </View>
   );
 }

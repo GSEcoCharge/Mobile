@@ -8,6 +8,7 @@ interface ActionButtonProps {
   onPress: () => void;
   isPrimary: boolean;
   icon?: React.ReactNode;
+  alignSelf?: "flex-start" | "center" | "flex-end";
 }
 
 export default function ActionButton({
@@ -15,10 +16,16 @@ export default function ActionButton({
   onPress,
   isPrimary,
   icon,
+  alignSelf,
 }: ActionButtonProps) {
   return (
     <View
-      style={[styles.button, isPrimary ? styles.primary : styles.secondary]}
+      style={[
+        styles.button,
+        isPrimary ? styles.primary : styles.secondary,
+        { alignSelf: alignSelf },
+        alignSelf ? styles.removeFlexGrow : {},
+      ]}
       onTouchStart={onPress}
     >
       {icon}
@@ -38,12 +45,15 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 16,
     paddingVertical: 12,
-    paddingHorizontal: 32,
     flexGrow: 1,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: 4,
+  },
+  removeFlexGrow: {
+    flexGrow: 0,
+    paddingHorizontal: 16,
   },
   primary: {
     backgroundColor: COLORS.primary,

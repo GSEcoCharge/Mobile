@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
+import PLUG_OPTIONS from "@/constants/PLUG_OPTIONS";
 
 interface VehicleCardProps {
   vehicle: {
@@ -10,6 +11,7 @@ interface VehicleCardProps {
     type: string;
     brand: string;
     model: string;
+    plugs: string[];
     licensePlate?: string;
     batteryCapacity: number;
     totalRange: number;
@@ -18,7 +20,13 @@ interface VehicleCardProps {
   onEdit: (vehicle: VehicleCardProps["vehicle"]) => void;
 }
 
+interface PlugOption {
+  id: string;
+  name: string;
+}
+
 const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onEdit }) => {
+ 
   return (
     <View style={styles.vehicleCard}>
       <Text style={styles.vehicleBrand}>{vehicle.brand}</Text>
@@ -28,9 +36,23 @@ const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onEdit }) => {
           {vehicle.licensePlate || "Sem placa"}
         </Text>
       </View>
+      <View style={styles.plugsContainer}>
+        {vehicle.plugs?.length > 0 &&
+          vehicle.plugs.map((plug: PlugOption["id"]) => (
+            <View key={plug} style={styles.plugItem}>
+              <Text style={[TEXT_STYLES.body_medium, { color: "red" }]}>
+                {PLUG_OPTIONS.find((option) => option.id === plug)?.name}
+              </Text>
+            </View>
+          ))}
+      </View>
       <View style={styles.vehicleDetailsRow}>
         <View style={styles.vehicleSpecs}>
-          <Ionicons name="flash" size={16} color={COLORS.primary} />
+          <Ionicons
+            name={vehicle.type === "Elétrico" ? "flash" : "leaf"}
+            size={16}
+            color={COLORS.primary}
+          />
           <Text style={styles.vehicleText}>{vehicle.type}</Text>
           <Text style={styles.separator}>|</Text>
           <Text style={styles.vehicleText}>{vehicle.batteryCapacity} kWh</Text>
@@ -74,11 +96,17 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 4,
   },
+  plugsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 12,
+    flexWrap: "wrap",
+    gap: 8,
+  },
   vehicleDetailsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 8,
   },
   vehicleSpecs: {
     flexDirection: "row",
@@ -98,6 +126,14 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.primary,
+  },
+  plugItem: {
+    backgroundColor: COLORS.separator,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 24,
   },
 });
 

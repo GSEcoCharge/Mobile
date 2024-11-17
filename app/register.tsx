@@ -16,29 +16,51 @@ import AuthPasswordInput from "@/components/Auth/AuthPasswordInput";
 import AuthInputField from "@/components/Auth/AuthInputField";
 import AuthActionButton from "@/components/Auth/AuthActionButton";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Register() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({ nome: "", email: "", password: "" });
+  const [generalError, setGeneralError] = useState("");
 
   const auth = getAuth();
 
   const handleRegister = async () => {
-    if (!nome || !email || !password) {
-      alert("Preencha todos os campos");
-      return;
+    let hasErrors = false;
+    const newErrors = { nome: "", email: "", password: "" };
+    setGeneralError("");
+
+    if (!nome) {
+      newErrors.nome = "O campo de nome é obrigatório.";
+      hasErrors = true;
     }
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-      alert("Email inválido");
-      return;
+
+    if (!email) {
+      newErrors.email = "O campo de e-mail é obrigatório.";
+      hasErrors = true;
+    } else {
+      const emailRegex = /\S+@\S+\.\S+/;
+      if (!emailRegex.test(email)) {
+        newErrors.email = "Email inválido.";
+        hasErrors = true;
+      }
     }
-    if (password.length < 6) {
-      alert("A senha deve ter no mínimo 6 caracteres");
-      return;
+
+    if (!password) {
+      newErrors.password = "O campo de senha é obrigatório.";
+      hasErrors = true;
+    } else if (password.length < 6) {
+      newErrors.password = "A senha deve ter no mínimo 6 caracteres.";
+      hasErrors = true;
     }
+
+    setErrors(newErrors);
+
+    if (hasErrors) return;
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       router.dismissAll();
@@ -46,22 +68,21 @@ export default function Register() {
     } catch (error: any) {
       switch (error.code) {
         case "auth/email-already-in-use":
-          alert("Email já cadastrado");
+          setGeneralError("Email já cadastrado.");
           break;
         case "auth/invalid-email":
-          alert("Email inválido");
+          setGeneralError("Email inválido.");
           break;
         case "auth/operation-not-allowed":
-          alert("Operação não permitida");
+          setGeneralError("Operação não permitida.");
           break;
         case "auth/weak-password":
-          alert("Senha fraca");
+          setGeneralError("Senha fraca.");
           break;
         default:
-          alert("Erro desconhecido");
+          setGeneralError("Erro desconhecido.");
           console.error(error);
       }
-      console.error(error);
     }
   };
 
@@ -80,26 +101,63 @@ export default function Register() {
               <EletricCarRegisterIMG />
             </View>
             <Text style={styles.title}>Registre-se</Text>
+
+            {generalError ? (
+              <View style={styles.alertContainer}>
+                <Text style={styles.alertText}>{generalError}</Text>
+                <Text
+                  style={styles.alertClose}
+                  onPress={() => setGeneralError("")}
+                >
+                  <Ionicons name="close" size={24} />
+                </Text>
+              </View>
+            ) : null}
+
             <View style={{ gap: 24 }}>
-              <AuthInputField
-                label="Nome"
-                value={nome}
-                onChangeText={setNome}
-              />
-              <AuthInputField
-                label="Email"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-              />
-              <View style={{ gap: 8 }}>
+              <View>
+                <AuthInputField
+                  label="Nome"
+                  value={nome}
+                  onChangeText={(text) => {
+                    setNome(text);
+                    setErrors({ ...errors, nome: "" });
+                  }}
+                />
+                {errors.nome ? (
+                  <Text style={styles.errorText}>{errors.nome}</Text>
+                ) : null}
+              </View>
+
+              <View>
+                <AuthInputField
+                  label="Email"
+                  value={email}
+                  onChangeText={(text) => {
+                    setEmail(text);
+                    setErrors({ ...errors, email: "" });
+                  }}
+                  keyboardType="email-address"
+                />
+                {errors.email ? (
+                  <Text style={styles.errorText}>{errors.email}</Text>
+                ) : null}
+              </View>
+
+              <View>
                 <Text style={TEXT_STYLES.label_medium}>Senha</Text>
                 <AuthPasswordInput
                   value={password}
-                  onChangeText={setPassword}
+                  onChangeText={(text) => {
+                    setPassword(text);
+                    setErrors({ ...errors, password: "" });
+                  }}
                   showPassword={showPassword}
                   onTogglePassword={() => setShowPassword(!showPassword)}
                 />
+                {errors.password ? (
+                  <Text style={styles.errorText}>{errors.password}</Text>
+                ) : null}
               </View>
             </View>
             <AuthActionButton text="Registrar" onPress={handleRegister} />
@@ -129,5 +187,35 @@ const styles = StyleSheet.create({
     color: COLORS.normal,
     fontSize: 40,
     lineHeight: 48,
+  },
+  alertContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#FEF2F2",
+    borderColor: "#FCA5A5",
+    borderWidth: 1,
+    borderRadius: 8,
+    marginVertical: -16,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    width: "100%",
+  },
+  alertText: {
+    color: "#B91C1C",
+    fontSize: 14,
+    fontWeight: "500",
+    flex: 1,
+  },
+  alertClose: {
+    color: "#B91C1C",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginLeft: 12,
+  },
+  errorText: {
+    color: COLORS.error,
+    fontSize: 12,
+    marginTop: 4,
   },
 });
