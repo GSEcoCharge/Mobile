@@ -12,11 +12,6 @@ import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import ActionButton from "./VehicleActionButton";
 import { Ionicons } from "@expo/vector-icons";
 
-interface PlugOption {
-  id: string;
-  name: string;
-}
-
 interface PlugsModalProps {
   visible: boolean;
   onClose: () => void;
@@ -33,12 +28,12 @@ const PLUG_OPTIONS: PlugOption[] = [
   { id: "tesla", name: "Tesla" },
 ];
 
-const PlugsModal: React.FC<PlugsModalProps> = ({
+export default function PlugsModal({
   visible,
   onClose,
   onSave,
   initialSelectedPlugs = [],
-}) => {
+}: PlugsModalProps) {
   const [selectedPlugs, setSelectedPlugs] =
     useState<PlugOption[]>(initialSelectedPlugs);
 
@@ -102,7 +97,7 @@ const PlugsModal: React.FC<PlugsModalProps> = ({
       </View>
     </Modal>
   );
-};
+}
 
 const styles = StyleSheet.create({
   overlay: {
@@ -146,5 +141,3 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
   },
 });
-
-export default PlugsModal;

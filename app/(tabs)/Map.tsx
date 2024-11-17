@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import MapView, { Callout, Marker, Region } from "react-native-maps";
+import { StyleSheet, View } from "react-native";
+import MapView, { Marker, Region } from "react-native-maps";
 import { getLocation } from "@/components/Map/locationUtils";
 import LoadingScreen from "@/components/Utils/screens/LoadingScreen";
 import MapGPSButton from "@/components/Map/MapGPSButton";
@@ -9,40 +9,14 @@ import * as Location from "expo-location";
 import evStationsData from "@/components/Utils/api/ev_stations.json";
 import MapCalloutBox from "@/components/Map/MapCallout";
 
-interface LocationCoords {
-  latitude: number;
-  longitude: number;
-}
 
-interface EVStation {
-  formattedAddress: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-  displayName: {
-    text: string;
-    languageCode: string;
-  };
-  evChargeOptions?: {
-    connectorCount: number;
-    connectorAggregation: Array<{
-      type: string;
-      count: number;
-      maxChargeRateKw?: number;
-      availableCount?: number;
-      outOfServiceCount?: number;
-      availabilityLastUpdateTime?: string;
-    }>;
-  };
-}
 
 const isDebugMode = true;
 
-const MapScreen: React.FC = () => {
+export default function MapScreen() {
   const [location, setLocation] =
     useState<Location.LocationObjectCoords | null>(null);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [, setErrorMsg] = useState<string | null>(null);
   const [evStations, setEvStations] = useState<EVStation[]>([]);
   const [selectedStation, setSelectedStation] = useState<EVStation | null>(
     null
@@ -153,7 +127,7 @@ const MapScreen: React.FC = () => {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -164,5 +138,3 @@ const styles = StyleSheet.create({
     height: "100%",
   },
 });
-
-export default MapScreen;

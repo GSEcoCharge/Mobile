@@ -9,9 +9,9 @@ import {
 } from "react-native";
 import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
-import VehicleTypeSelector from "@/components/Vehicle/AddVehicle/VehicleTypeSelector";
-import FormInput from "@/components/Vehicle/AddVehicle/VehicleFormInput";
-import ActionButton from "@/components/Vehicle/AddVehicle/VehicleActionButton";
+import VehicleTypeSelector from "@/components/Vehicle/FormVehicle/VehicleTypeSelector";
+import FormInput from "@/components/Vehicle/FormVehicle/VehicleFormInput";
+import ActionButton from "@/components/Vehicle/FormVehicle/VehicleActionButton";
 import {
   addDoc,
   collection,
@@ -37,11 +37,6 @@ interface VehicleFormScreenProps {
     batteryCapacity: number;
     totalRange: number;
   };
-}
-
-interface PlugOption {
-  id: string;
-  name: string;
 }
 
 export default function VehicleFormScreen({
@@ -87,6 +82,8 @@ export default function VehicleFormScreen({
         useNativeDriver: true,
       }).start(() => setIsVisible(false));
     }
+    // useRef animation são estáveis e não precisam ser declarados como dependências
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedType]);
 
   function resetForm() {
@@ -268,7 +265,7 @@ export default function VehicleFormScreen({
                   >
                     {selectedPlugs.length > 0 ? "Alterar" : "Selecionar"}
                   </Text>
-                  {selectedPlugs.length == 0 ? (
+                  {selectedPlugs.length === 0 ? (
                     <Ionicons
                       name="chevron-down-circle-outline"
                       size={20}

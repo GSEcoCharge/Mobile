@@ -44,8 +44,17 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       router.dismissAll();
       router.replace("/(tabs)/map");
-    } catch (error) {
-      setGeneralError("E-mail ou senha inválidos");
+    } catch (error: any) {
+      if (error.code === "auth/user-not-found") {
+        setGeneralError("Usuário não encontrado.");
+      } else if (error.code === "auth/wrong-password") {
+        setGeneralError("Senha incorreta.");
+      } else if (error.code === "auth/invalid-email") {
+        setGeneralError("E-mail inválido.");
+      } else {
+        setGeneralError("Algo deu errado. Por favor, tente novamente.");
+        console.error("Unhandled error during login:", error);
+      }
     }
   };
 

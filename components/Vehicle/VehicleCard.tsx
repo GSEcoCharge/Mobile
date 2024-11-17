@@ -20,13 +20,9 @@ interface VehicleCardProps {
   onEdit: (vehicle: VehicleCardProps["vehicle"]) => void;
 }
 
-interface PlugOption {
-  id: string;
-  name: string;
-}
 
-const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onEdit }) => {
- 
+
+export default function VehicleCard({ vehicle, onEdit }: VehicleCardProps) {
   return (
     <View style={styles.vehicleCard}>
       <Text style={styles.vehicleBrand}>{vehicle.brand}</Text>
@@ -63,7 +59,7 @@ const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onEdit }) => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   vehicleCard: {
@@ -136,5 +132,3 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
 });
-
-export default VehicleCard;

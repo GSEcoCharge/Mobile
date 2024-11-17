@@ -11,7 +11,7 @@ interface GPSButtonProps {
   >;
 }
 
-const MapGPSButton: React.FC<GPSButtonProps> = ({ mapRef, setLocation }) => {
+export default function MapGPSButton({ mapRef, setLocation }: GPSButtonProps) {
   const [GPSColor, setGPSColor] = useState("#ea4335");
   const [bgColor, setBgColor] = useState("#fff");
 
@@ -57,7 +57,7 @@ const MapGPSButton: React.FC<GPSButtonProps> = ({ mapRef, setLocation }) => {
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       });
-    } catch (error) {
+    } catch {
       Alert.alert("Erro", "Não foi possível obter a localização.");
     }
   };
@@ -72,7 +72,7 @@ const MapGPSButton: React.FC<GPSButtonProps> = ({ mapRef, setLocation }) => {
       <Ionicons name="locate" size={28} color={GPSColor} />
     </Pressable>
   );
-};
+}
 
 const styles = StyleSheet.create({
   button: {
@@ -90,5 +90,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
-export default MapGPSButton;

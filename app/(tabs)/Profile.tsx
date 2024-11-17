@@ -1,6 +1,6 @@
 import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
 

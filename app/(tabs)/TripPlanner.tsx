@@ -29,7 +29,9 @@ export default function TabOneScreen() {
           }}
         >
           <Text style={styles.title}>Desculpas</Text>
-          <Text style={styles.title}>Em manunteção</Text>
+          <Text style={styles.title}>Em 
+manutenção
+</Text>
           <Text
             style={[
               TEXT_STYLES.label_large,

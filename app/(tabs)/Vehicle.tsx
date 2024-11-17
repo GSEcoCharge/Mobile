@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   View,
   Text,
@@ -10,22 +10,9 @@ import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { collection, getDocs } from "firebase/firestore";
 import { auth, db } from "@/firebaseConfig";
-import ActionButton from "@/components/Vehicle/AddVehicle/VehicleActionButton";
-import VehicleFormScreen from "@/components/Vehicle/AddVehicle/VehicleFormScreen";
+import VehicleFormScreen from "@/components/Vehicle/FormVehicle/VehicleFormScreen";
 import VehicleCard from "@/components/Vehicle/VehicleCard";
 import { Ionicons } from "@expo/vector-icons";
-
-interface Vehicle {
-  id: string;
-  type: string;
-  brand: string;
-  model: string;
-  plugs: string[];
-  licensePlate?: string;
-  batteryCapacity: number;
-  totalRange: number;
-  createdAt: string;
-}
 
 export default function VehicleScreen() {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
@@ -37,7 +24,7 @@ export default function VehicleScreen() {
 
   const user = auth.currentUser;
 
-  const fetchVehicles = async () => {
+  const fetchVehicles = useCallback(async () => {
     if (!user) return;
 
     setLoading(true);
@@ -62,11 +49,11 @@ export default function VehicleScreen() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user]);
 
   useEffect(() => {
     fetchVehicles();
-  }, []);
+  }, [fetchVehicles]);
 
   const handleEditVehicle = (vehicle: Vehicle) => {
     setVehicleToEdit(vehicle);
@@ -114,7 +101,12 @@ export default function VehicleScreen() {
             onTouchStart={() => setShowAddVehicleScreen(true)}
           >
             <Ionicons name="add" size={24} color={COLORS.white} />
-            <Text style={[TEXT_STYLES.title_medium, { color: COLORS.white, fontSize: 18 }]}>
+            <Text
+              style={[
+                TEXT_STYLES.title_medium,
+                { color: COLORS.white, fontSize: 18 },
+              ]}
+            >
               Adicionar veículo
             </Text>
           </View>

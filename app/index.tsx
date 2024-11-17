@@ -1,6 +1,5 @@
 import PictorialIcon from "@/assets/svg/pictorial";
 import EletricCarHomeIMG from "@/assets/svg/eletric-car-home";
-import EletricCarHomeDetailIMG from "@/assets/svg/eletric-car-home-detail";
 import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { Link } from "expo-router";

@@ -1,5 +1,4 @@
 import EletricCarResetIMG from "@/assets/svg/eletric-car-reset";
-import ImagePlaceholder from "@/assets/svg/imagePlaceholder";
 import AuthActionButton from "@/components/Auth/AuthActionButton";
 import AuthInputField from "@/components/Auth/AuthInputField";
 import COLORS from "@/constants/COLORS";
@@ -14,7 +13,6 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";

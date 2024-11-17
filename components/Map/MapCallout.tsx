@@ -15,29 +15,6 @@ import {
 import { LocationObjectCoords } from "expo-location";
 import { calculateDistanceKM } from "./locationUtils";
 
-interface EVStation {
-  formattedAddress: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-  displayName: {
-    text: string;
-    languageCode: string;
-  };
-  evChargeOptions?: {
-    connectorCount: number;
-    connectorAggregation: Array<{
-      type: string;
-      count: number;
-      maxChargeRateKw?: number;
-      availableCount?: number;
-      outOfServiceCount?: number;
-      availabilityLastUpdateTime?: string;
-    }>;
-  };
-}
-
 interface CalloutBoxProps {
   station: EVStation;
   onClose: () => void;
@@ -129,7 +106,7 @@ export default function MapCalloutBox({
                               station.evChargeOptions.connectorAggregation[0]
                                 .availableCount === 0
                                 ? COLORS.error
-                                : COLORS.primary
+                                : COLORS.primary,
                           },
                         ]}
                       />

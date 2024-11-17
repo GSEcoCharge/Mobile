@@ -1,11 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const LoadingScreen: React.FC = () => (
-  <View style={styles.container}>
-    <Text>Loading...</Text>
-  </View>
-);
+export default function LoadingScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Loading...</Text>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -14,5 +16,3 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-export default LoadingScreen;
