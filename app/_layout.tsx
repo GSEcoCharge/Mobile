@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import "react-native-get-random-values";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import COLORS from "@/constants/Colors";
+import COLORS from "@/constants/COLORS";
 
 export {
   // Catch any errors thrown by the Layout component.

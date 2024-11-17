@@ -11,28 +11,44 @@ import EletricCarLoginIMG from "@/assets/svg/eletric-car-login";
 import AuthInputField from "@/components/Auth/AuthInputField";
 import AuthPasswordInput from "@/components/Auth/AuthPasswordInput";
 import AuthActionButton from "@/components/Auth/AuthActionButton";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [generalError, setGeneralError] = useState("");
 
   const auth = getAuth(app);
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      alert("Preencha todos os campos");
-      return;
+    let hasErrors = false;
+    const newErrors = { email: "", password: "" };
+    setGeneralError("");
+
+    if (!email) {
+      newErrors.email = "O campo de e-mail é obrigatório.";
+      hasErrors = true;
     }
+    if (!password) {
+      newErrors.password = "O campo de senha é obrigatório.";
+      hasErrors = true;
+    }
+
+    setErrors(newErrors);
+
+    if (hasErrors) return;
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.dismissAll();
       router.replace("/(tabs)/map");
     } catch (error) {
-      alert("Erro ao autenticar");
-      console.error(error);
+      setGeneralError("E-mail ou senha inválidos");
     }
   };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAvoidingView
@@ -48,21 +64,49 @@ export default function Login() {
               <EletricCarLoginIMG />
             </View>
             <Text style={styles.title}>Login</Text>
+
+            {generalError ? (
+              <View style={styles.alertContainer}>
+                <Text style={styles.alertText}>{generalError}</Text>
+                <Text
+                  style={styles.alertClose}
+                  onPress={() => setGeneralError("")}
+                >
+                  <Ionicons name="close" size={24} />
+                </Text>
+              </View>
+            ) : null}
+
             <View style={{ gap: 24 }}>
-              <AuthInputField
-                label="Email"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-              />
-              <View style={{ gap: 8 }}>
+              <View>
+                <AuthInputField
+                  label="Email"
+                  value={email}
+                  onChangeText={(text) => {
+                    setEmail(text);
+                    setErrors({ ...errors, email: "" });
+                  }}
+                  keyboardType="email-address"
+                />
+                {errors.email ? (
+                  <Text style={styles.errorText}>{errors.email}</Text>
+                ) : null}
+              </View>
+
+              <View>
                 <Text style={TEXT_STYLES.label_medium}>Senha</Text>
                 <AuthPasswordInput
                   value={password}
-                  onChangeText={setPassword}
+                  onChangeText={(text) => {
+                    setPassword(text);
+                    setErrors({ ...errors, password: "" });
+                  }}
                   showPassword={showPassword}
                   onTogglePassword={() => setShowPassword(!showPassword)}
                 />
+                {errors.password ? (
+                  <Text style={styles.errorText}>{errors.password}</Text>
+                ) : null}
                 <View style={{ alignSelf: "flex-start" }}>
                   <Link href={"/resetPassword"} style={{ paddingVertical: 8 }}>
                     <Text
@@ -102,5 +146,35 @@ const styles = StyleSheet.create({
     color: COLORS.normal,
     fontSize: 40,
     lineHeight: 48,
+  },
+  alertContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#FEF2F2",
+    borderColor: "#FCA5A5",
+    borderWidth: 1,
+    borderRadius: 8,
+    marginVertical: -16,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    width: "100%",
+  },
+  alertText: {
+    color: "#B91C1C",
+    fontSize: 14,
+    fontWeight: "500",
+    flex: 1,
+  },
+  alertClose: {
+    color: "#B91C1C",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginLeft: 12,
+  },
+  errorText: {
+    color: "#FF4D4D",
+    fontSize: 12,
+    marginTop: 4,
   },
 });

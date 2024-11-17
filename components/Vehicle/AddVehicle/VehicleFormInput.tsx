@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet, KeyboardTypeOptions } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  KeyboardTypeOptions,
+  DimensionValue,
+} from "react-native";
 import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
 
@@ -8,17 +15,30 @@ interface FormInputProps {
   value: string;
   onChangeText: (text: string) => void;
   keyboardType?: KeyboardTypeOptions;
+  maxLength?: number;
+  width?: DimensionValue;
+  autoCapitalize?: "none" | "sentences" | "words" | "characters";
 }
 
-export default function FormInput({ label, value, onChangeText, keyboardType }: FormInputProps) {
+export default function FormInput({
+  label,
+  value,
+  onChangeText: onChangeTextInput,
+  keyboardType,
+  maxLength,
+  width: inputWidth,
+  autoCapitalize="none",
+}: FormInputProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         value={value}
-        onChangeText={onChangeText}
-        style={styles.input}
+        onChangeText={onChangeTextInput}
+        style={[styles.input, { width: inputWidth }]}
         keyboardType={keyboardType}
+        maxLength={maxLength}
+        autoCapitalize={autoCapitalize}
       />
     </View>
   );

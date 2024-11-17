@@ -1,11 +1,7 @@
 import COLORS from "@/constants/COLORS";
 import CONNECTOR_TYPE from "@/constants/CONNECTOR_TYPE";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
-import {
-  FontAwesome6,
-  Ionicons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import {
   View,
@@ -59,12 +55,12 @@ export default function MapCalloutBox({
     if (app === "google") {
       const url = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
       Linking.openURL(url).catch(() => {
-        Alert.alert("Error", "Unable to open Google Maps.");
+        Alert.alert("Erro", "Não foi possível abrir o Google Maps.");
       });
     } else if (app === "waze") {
       const url = `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`;
       Linking.openURL(url).catch(() => {
-        Alert.alert("Error", "Unable to open Waze.");
+        Alert.alert("Erro", "Não foi possível abrir o Waze.");
       });
     }
   };
@@ -113,6 +109,40 @@ export default function MapCalloutBox({
           {station.evChargeOptions?.connectorAggregation &&
             station.evChargeOptions.connectorAggregation.length > 0 && (
               <>
+                {station.evChargeOptions.connectorAggregation[0]
+                  .availableCount !== undefined && (
+                  <View style={styles.detailsContainer}>
+                    <View style={styles.iconWithText}>
+                      <Ionicons
+                        name="pulse-outline"
+                        size={20}
+                        color={COLORS.normal}
+                      />
+                      <Text style={styles.detailsLabel}>Status:</Text>
+                    </View>
+                    <View style={styles.statusWithCircle}>
+                      <View
+                        style={[
+                          styles.statusIndicator,
+                          {
+                            backgroundColor:
+                              station.evChargeOptions.connectorAggregation[0]
+                                .availableCount === 0
+                                ? COLORS.error
+                                : COLORS.primary
+                          },
+                        ]}
+                      />
+                      <Text style={styles.detailsValue}>
+                        {station.evChargeOptions.connectorAggregation[0]
+                          .availableCount === 0
+                          ? "Indisponível"
+                          : "Disponível"}
+                      </Text>
+                    </View>
+                  </View>
+                )}
+
                 {station.evChargeOptions.connectorAggregation[0].type && (
                   <View style={styles.detailsContainer}>
                     <View style={styles.iconWithText}>
@@ -245,6 +275,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
+  },
+  statusWithCircle: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  statusIndicator: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginRight: 6,
   },
   detailsLabel: {
     ...TEXT_STYLES.label_medium,

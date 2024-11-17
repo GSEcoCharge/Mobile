@@ -2,13 +2,22 @@ import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { getAuth, signOut } from "firebase/auth";
 
 export default function ProfileScreen() {
+  const handleLogout = async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      {/* center button with logout that return to index */}
       <Link push href="/" asChild>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={handleLogout}>
           <Text style={styles.buttonText}>Logout</Text>
         </Pressable>
       </Link>

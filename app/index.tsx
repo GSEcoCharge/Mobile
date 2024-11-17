@@ -6,8 +6,20 @@ import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import { Link } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { app } from "@/firebaseConfig";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function HomeScreen() {
+  const auth = getAuth(app);
+  const handleDebugLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, "teste@teste.com", "testeteste");
+    } catch (error) {
+      alert("Erro ao autenticar");
+      console.error(error);
+    }
+  };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -87,7 +99,12 @@ export default function HomeScreen() {
           <Text style={{ color: COLORS.primary }}>Política de Privacidade</Text>
         </Text>
         {/* TODO: REMOVE DEBUG */}
-        <Link href={"/(tabs)/map"} style={{ color: "red" }}> 
+        {/* sign with debug@debug */}
+        <Link
+          href={"/(tabs)/map"}
+          style={{ color: "red" }}
+          onPress={() => handleDebugLogin()}
+        >
           Debug
         </Link>
       </View>

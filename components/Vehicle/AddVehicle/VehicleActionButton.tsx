@@ -7,17 +7,21 @@ interface ActionButtonProps {
   text: string;
   onPress: () => void;
   isPrimary: boolean;
+  icon?: React.ReactNode;
 }
 
-export default function ActionButton({ text, onPress, isPrimary }: ActionButtonProps) {
+export default function ActionButton({
+  text,
+  onPress,
+  isPrimary,
+  icon,
+}: ActionButtonProps) {
   return (
     <View
-      style={[
-        styles.button,
-        isPrimary ? styles.primary : styles.secondary,
-      ]}
+      style={[styles.button, isPrimary ? styles.primary : styles.secondary]}
       onTouchStart={onPress}
     >
+      {icon}
       <Text
         style={[
           TEXT_STYLES.label_medium,
@@ -36,6 +40,10 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 32,
     flexGrow: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 4,
   },
   primary: {
     backgroundColor: COLORS.primary,
