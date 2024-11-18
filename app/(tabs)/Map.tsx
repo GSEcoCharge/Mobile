@@ -9,8 +9,6 @@ import * as Location from "expo-location";
 import evStationsData from "@/components/Utils/api/ev_stations.json";
 import MapCalloutBox from "@/components/Map/MapCallout";
 
-
-
 const isDebugMode = true;
 
 export default function MapScreen() {
@@ -45,10 +43,20 @@ export default function MapScreen() {
     }
   };
 
-  const fetchEVStations = async (location: LocationCoords) => {
-    const latitude = location.latitude;
-    const longitude = location.longitude;
-    const radius = 1000;
+  const fetchEVStations = async (
+    location: LocationCoords | null,
+    customLatitude?: number,
+    customLongitude?: number
+  ) => {
+    const latitude = customLatitude || location?.latitude;
+    const longitude = customLongitude || location?.longitude;
+
+    if (!latitude || !longitude) {
+      console.error("Latitude and Longitude are required");
+      return;
+    }
+
+    const radius = 2500;
 
     const url = "https://places.googleapis.com/v1/places:searchNearby";
     const headers = {
@@ -79,6 +87,7 @@ export default function MapScreen() {
       if (!response.ok) throw new Error("Network response was not ok");
 
       const data = await response.json();
+
       setEvStations(data.places || []);
     } catch (error) {
       console.error("Error fetching EV stations:", error);
@@ -116,7 +125,11 @@ export default function MapScreen() {
             />
           ))}
       </MapView>
-      <MapSearchBar mapRef={mapRef} location={location} />
+      <MapSearchBar
+        mapRef={mapRef}
+        location={location}
+        fetchEVStations={fetchEVStations}
+      />
       <MapGPSButton mapRef={mapRef} setLocation={setLocation} />
       {selectedStation && (
         <MapCalloutBox

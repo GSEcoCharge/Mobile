@@ -18,6 +18,7 @@ interface FormInputProps {
   maxLength?: number;
   width?: DimensionValue;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
+  onlyDigits?: boolean;
 }
 
 export default function FormInput({
@@ -27,14 +28,25 @@ export default function FormInput({
   keyboardType,
   maxLength,
   width: inputWidth,
-  autoCapitalize="none",
+  autoCapitalize = "none",
+  onlyDigits,
 }: FormInputProps) {
+  function handleTextOnlyDigits(value: string) {
+    return value.replace(/\D/g, "");
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         value={value}
-        onChangeText={onChangeTextInput}
+        onChangeText={(text) => {
+          if (onlyDigits) {
+            onChangeTextInput(handleTextOnlyDigits(text));
+          } else {
+            onChangeTextInput(text);
+          }
+        }}
         style={[styles.input, { width: inputWidth }]}
         keyboardType={keyboardType}
         maxLength={maxLength}
@@ -55,11 +67,12 @@ const styles = StyleSheet.create({
     fontFamily: "WorkSans_500Medium",
   },
   input: {
+    ...TEXT_STYLES.body_large,
     height: 48,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: COLORS.subtleLight,
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
     paddingVertical: 12,
   },
 });

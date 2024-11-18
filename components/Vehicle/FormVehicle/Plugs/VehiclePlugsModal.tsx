@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import COLORS from "@/constants/COLORS";
 import TEXT_STYLES from "@/constants/TEXT_STYLES";
-import ActionButton from "./VehicleActionButton";
+import ActionButton from "../VehicleActionButton";
 import { Ionicons } from "@expo/vector-icons";
 
 interface PlugsModalProps {
@@ -73,7 +73,7 @@ export default function PlugsModal({
                   }
                   size={24}
                   color={COLORS.primary}
-                  style={styles.checkbox}
+                  style={{ marginRight: 8 }}
                 />
                 <Text style={TEXT_STYLES.body_large}>{item.name}</Text>
               </TouchableOpacity>
@@ -120,24 +120,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: COLORS.separator,
   },
-  checkbox: {
-    marginRight: 8,
-  },
+
   actions: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 16,
-  },
-  actionButton: {
-    padding: 8,
-    borderRadius: 4,
-    width: "45%",
-    alignItems: "center",
-  },
-  cancelText: {
-    color: COLORS.error,
-  },
-  saveText: {
-    color: COLORS.primary,
   },
 });

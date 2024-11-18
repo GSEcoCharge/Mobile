@@ -10,9 +10,18 @@ import { LocationObjectCoords } from "expo-location";
 interface SearchBarProps {
   mapRef: React.RefObject<MapView>;
   location: LocationObjectCoords;
+  fetchEVStations: (
+    location: LocationObjectCoords | null,
+    lat?: number,
+    lng?: number
+  ) => void;
 }
 
-export default function MapSearchBar({ mapRef, location }: SearchBarProps) {
+export default function MapSearchBar({
+  mapRef,
+  location,
+  fetchEVStations,
+}: SearchBarProps) {
   const [sessionToken, setSessionToken] = useState<string>("");
   const [chosenPlace, setChosenPlace] = useState<any | null>(null);
   const [placeholder, setPlaceholder] = useState<string>("Pesquise aqui");
@@ -66,16 +75,16 @@ export default function MapSearchBar({ mapRef, location }: SearchBarProps) {
         onPress={(data, details = null) => {
           if (details) {
             setChosenPlace(details);
-            console.log(data);
-            console.log(details);
-
             const { lat, lng } = details.geometry.location;
+
             mapRef.current?.animateToRegion({
               latitude: lat,
               longitude: lng,
               latitudeDelta: 0.005,
               longitudeDelta: 0.005,
             });
+
+            fetchEVStations(null, lat, lng);
           }
         }}
         enablePoweredByContainer={false}

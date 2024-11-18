@@ -20,8 +20,6 @@ interface VehicleCardProps {
   onEdit: (vehicle: VehicleCardProps["vehicle"]) => void;
 }
 
-
-
 export default function VehicleCard({ vehicle, onEdit }: VehicleCardProps) {
   return (
     <View style={styles.vehicleCard}>
@@ -69,6 +67,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.subtleLight,
     backgroundColor: COLORS.white,
     marginBottom: 8,
+    overflow: "hidden",
   },
   vehicleBrand: {
     ...TEXT_STYLES.headline_small,
@@ -81,6 +80,7 @@ const styles = StyleSheet.create({
   },
   vehicleModel: {
     ...TEXT_STYLES.headline_medium,
+    maxWidth: "70%",
   },
   vehicleLicense: {
     ...TEXT_STYLES.body_medium,
@@ -107,6 +107,8 @@ const styles = StyleSheet.create({
   vehicleSpecs: {
     flexDirection: "row",
     alignItems: "center",
+    maxWidth: "80%",
+    overflow: "hidden",
   },
   vehicleText: {
     ...TEXT_STYLES.body_medium,

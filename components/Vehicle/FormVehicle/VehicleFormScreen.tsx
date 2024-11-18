@@ -22,8 +22,11 @@ import {
 import { auth, db } from "@/firebaseConfig";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { formatFloat } from "@/components/Utils/formatters";
-import PlugsModal from "./VehiclePlugsModal";
+import PlugsModal from "./Plugs/VehiclePlugsModal";
 import PLUG_OPTIONS from "@/constants/PLUG_OPTIONS";
+import PlugInput from "./Plugs/VehiclePlugInput";
+import BrandSelectorModal from "./Modals/BrandSelectorModal";
+import ModelSelectorModal from "./Modals/ModelSelectorModal";
 
 interface VehicleFormScreenProps {
   returnToVehicles: () => void;
@@ -55,6 +58,9 @@ export default function VehicleFormScreen({
   const [totalRange, setTotalRange] = useState(
     vehicle?.totalRange.toString() || ""
   );
+
+  const [brandModalVisible, setBrandModalVisible] = useState(false);
+  const [modelModalVisible, setModelModalVisible] = useState(false);
   const [plugsModalVisible, setPlugsModalVisible] = useState(false);
   const [selectedPlugs, setSelectedPlugs] = useState<PlugOption[]>(
     vehicle?.plugs
@@ -98,15 +104,19 @@ export default function VehicleFormScreen({
   }
 
   const saveVehicleToDatabase = async () => {
-    if (
-      !selectedType ||
-      !brand ||
-      !model ||
-      !selectedPlugs ||
-      !batteryCapacity ||
-      !totalRange
-    ) {
-      alert("Preencha todos os campos obrigatórios.");
+    const missingFields: string[] = [];
+
+    if (!selectedType) missingFields.push("Tipo do veículo");
+    if (!brand) missingFields.push("Marca");
+    if (!model) missingFields.push("Modelo");
+    if (selectedPlugs.length === 0) missingFields.push("Plugs ou adaptadores");
+    if (!batteryCapacity) missingFields.push("Capacidade da bateria");
+    if (!totalRange) missingFields.push("Autonomia Total");
+
+    if (missingFields.length > 0) {
+      alert(
+        `Preencha os campos obrigatórios:\n- ${missingFields.join("\n- ")}`
+      );
       return;
     }
 
@@ -181,6 +191,20 @@ export default function VehicleFormScreen({
     }
   };
 
+  const handleSaveBrand = (selectedBrand: string) => {
+    setBrand(selectedBrand);
+    setModel("");
+  };
+
+  const handleSaveModel = (selectedModel: {
+    name: string;
+    battery_capacity: number;
+    autonomy: number;
+  }) => {
+    setModel(selectedModel.name);
+    setBatteryCapacity(selectedModel.battery_capacity.toString());
+    setTotalRange(selectedModel.autonomy.toString());
+  };
   const handleSavePlugs = (plugs: PlugOption[]) => {
     setSelectedPlugs(plugs);
   };
@@ -225,63 +249,28 @@ export default function VehicleFormScreen({
               },
             ]}
           >
-            <FormInput
-              label="Marca do veículo"
-              value={brand}
-              onChangeText={setBrand}
-            />
-            <FormInput
-              label="Modelo do veículo"
-              value={model}
-              onChangeText={setModel}
-            />
             <View style={styles.inputContainer}>
-              <Text style={styles.label}>Plugs ou adaptadores</Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  gap: 8,
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                }}
+              <Text style={styles.label}>Marca do veículo</Text>
+              <TouchableOpacity
+                onPress={() => setBrandModalVisible(true)}
+                style={styles.inputContainer}
               >
-                {selectedPlugs.length > 0 &&
-                  selectedPlugs.map((plug) => (
-                    <View key={plug.id} style={styles.plugItem}>
-                      <Text style={[TEXT_STYLES.body_medium, { color: "red" }]}>
-                        {plug.name}
-                      </Text>
-                    </View>
-                  ))}
-                <TouchableOpacity
-                  style={styles.selectPlugsButton}
-                  onPress={() => setPlugsModalVisible(true)}
-                >
-                  <Text
-                    style={[
-                      TEXT_STYLES.body_medium,
-                      { color: COLORS.subtleDark },
-                    ]}
-                  >
-                    {selectedPlugs.length > 0 ? "Alterar" : "Selecionar"}
-                  </Text>
-                  {selectedPlugs.length === 0 ? (
-                    <Ionicons
-                      name="chevron-down-circle-outline"
-                      size={20}
-                      color={COLORS.subtleDark}
-                    />
-                  ) : (
-                    <MaterialCommunityIcons
-                      name="power-plug-outline"
-                      size={20}
-                      color={COLORS.subtleDark}
-                    />
-                  )}
-                </TouchableOpacity>
-              </View>
+                <Text style={styles.inputText}>{brand}</Text>
+              </TouchableOpacity>
             </View>
-
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>Modelo do veículo</Text>
+              <TouchableOpacity
+                onPress={() => setModelModalVisible(true)}
+                style={styles.inputContainer}
+              >
+                <Text style={styles.inputText}>{model}</Text>
+              </TouchableOpacity>
+            </View>
+            <PlugInput
+              selectedPlugs={selectedPlugs}
+              onEditPlugs={() => setPlugsModalVisible(true)}
+            />
             <FormInput
               label="Placa (opcional)"
               value={licensePlate}
@@ -295,12 +284,14 @@ export default function VehicleFormScreen({
               value={batteryCapacity}
               onChangeText={setBatteryCapacity}
               keyboardType="numeric"
+              onlyDigits
             />
             <FormInput
               label="Autonomia Total (km)"
               value={totalRange}
               onChangeText={setTotalRange}
               keyboardType="numeric"
+              onlyDigits
             />
             <View style={styles.actionContainer}>
               <ActionButton
@@ -328,6 +319,17 @@ export default function VehicleFormScreen({
           </Animated.View>
         )}
       </View>
+      <BrandSelectorModal
+        visible={brandModalVisible}
+        onClose={() => setBrandModalVisible(false)}
+        onSave={handleSaveBrand}
+      />
+      <ModelSelectorModal
+        visible={modelModalVisible}
+        onClose={() => setModelModalVisible(false)}
+        selectedBrand={brand}
+        onSave={handleSaveModel}
+      />
       <PlugsModal
         visible={plugsModalVisible}
         onClose={() => setPlugsModalVisible(false)}
@@ -355,6 +357,16 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: "100%",
     gap: 8,
+  },
+  inputText: {
+    ...TEXT_STYLES.body_large,
+    color: COLORS.normal,
+    fontFamily: "WorkSans_500Medium",
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: COLORS.subtleLight,
   },
   label: {
     ...TEXT_STYLES.label_large,
@@ -400,25 +412,5 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     color: COLORS.primary,
     fontSize: 16,
-  },
-  selectPlugsButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 4,
-    paddingVertical: 8,
-    paddingHorizontal: 8,
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: COLORS.subtleLight,
-    alignSelf: "flex-start",
-  },
-  plugItem: {
-    backgroundColor: COLORS.separator,
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 24,
   },
 });

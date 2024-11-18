@@ -135,7 +135,10 @@ export default function MapCalloutBox({
                       showsHorizontalScrollIndicator={false}
                     >
                       {station.evChargeOptions.connectorAggregation.map(
-                        (connector, index) => (
+                        (
+                          connector: { type: string },
+                          index: React.Key | null | undefined
+                        ) => (
                           <View key={index} style={styles.plugItem}>
                             <Text
                               style={[styles.detailsValue, { color: "red" }]}
