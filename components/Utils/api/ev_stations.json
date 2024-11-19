@@ -1,0 +1,419 @@
+{
+    "places": [
+        {
+            "formattedAddress": "R. Ulisses Cruz, 993 - Tatuapé, São Paulo - SP, 03077-000, Brasil",
+            "location": {
+                "latitude": -23.528764600000002,
+                "longitude": -46.577902699999996
+            },
+            "displayName": {
+                "text": "Assaí Estação de Carregamento",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 22,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Ulisses Cruz, 993 - Tatuapé, São Paulo - SP, 03077-000, Brasil",
+            "location": {
+                "latitude": -23.5284346,
+                "longitude": -46.57794870000001
+            },
+            "displayName": {
+                "text": "Eletroposto Assaí Marginal Tatuapé",
+                "languageCode": "pt"
+            }
+        },
+        {
+            "formattedAddress": "Av. Condessa Elizabeth de Robiano, 1750 - Tatuapé, São Paulo - SP, 03074-000, Brasil",
+            "location": {
+                "latitude": -23.528765999999997,
+                "longitude": -46.581648
+            },
+            "displayName": {
+                "text": "Eletroposto Movida Aluguel de Carros",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 10,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_CCS_COMBO_2",
+                        "maxChargeRateKw": 50,
+                        "count": 1
+                    },
+                    {
+                        "type": "EV_CONNECTOR_TYPE_CHADEMO",
+                        "maxChargeRateKw": 50,
+                        "count": 1
+                    },
+                    {
+                        "type": "EV_CONNECTOR_TYPE_J1772",
+                        "maxChargeRateKw": 50,
+                        "count": 1
+                    },
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "count": 7
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "Av. Morvan Dias de Figueiredo, 6157 - Vila Maria, São Paulo - SP, 02170-901, Brasil",
+            "location": {
+                "latitude": -23.5250538,
+                "longitude": -46.5737387
+            },
+            "displayName": {
+                "text": "Atacadão - Vila Maria Charging Station",
+                "languageCode": "en"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 22,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Gonçalves Crespo, 78 - Tatuapé, São Paulo - SP, 03066-030, Brasil",
+            "location": {
+                "latitude": -23.538864999999998,
+                "longitude": -46.5757161
+            },
+            "displayName": {
+                "text": "Metrô Boulevard - Tatuapé Charging Station",
+                "languageCode": "en"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "Av. Celso Garcia, 2532 - Tatuapé, São Paulo - SP, 02114-001, Brasil",
+            "location": {
+                "latitude": -23.536499,
+                "longitude": -46.587812
+            },
+            "displayName": {
+                "text": "Eletroposto Galpão da Luz",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 20,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "Rua Domingos Agostim, 91 - Cidade Mãe do Céu, São Paulo - SP, 03306-010, Brasil",
+            "location": {
+                "latitude": -23.541850699999998,
+                "longitude": -46.5762722
+            },
+            "displayName": {
+                "text": "Metrô Tatuapé Charging Station",
+                "languageCode": "en"
+            },
+            "evChargeOptions": {
+                "connectorCount": 2,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "count": 2
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Itapura, 239 - Tatuapé, São Paulo - SP, 03310-000 - Vila Gomes Cardim, São Paulo - SP, 03310, Brasil",
+            "location": {
+                "latitude": -23.540610599999997,
+                "longitude": -46.567003
+            },
+            "displayName": {
+                "text": "EZvolt Charging Station",
+                "languageCode": "en"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 6.900000095367432,
+                        "count": 1,
+                        "availableCount": 1,
+                        "outOfServiceCount": 0,
+                        "availabilityLastUpdateTime": "2024-11-13T04:30:00Z"
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Tijuco Preto, 434 - Tatuapé, São Paulo - SP, 03316-000, Brasil",
+            "location": {
+                "latitude": -23.544121000000004,
+                "longitude": -46.571526
+            },
+            "displayName": {
+                "text": "Eletroposto Centro Automotivo Porto Seguro - Tatuapé",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 22,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Padre Estevão Pernet, 718 - Tatuapé, São Paulo - SP, 03315-000, Brasil",
+            "location": {
+                "latitude": -23.5425161,
+                "longitude": -46.5680579
+            },
+            "displayName": {
+                "text": "Estação de carregamento ChargeOn",
+                "languageCode": "pt"
+            }
+        },
+        {
+            "formattedAddress": "RUA SERRA DE BRAGANÇA, 647, TATUAPE, SÃO PAULO, SP, BR, CEP: - Vila Gomes Cardim, São Paulo - SP, 03318-000, Brasil",
+            "location": {
+                "latitude": -23.544237,
+                "longitude": -46.568993999999996
+            },
+            "displayName": {
+                "text": "Eletroposto Volvo",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 3.700000047683716,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Serra de Bragança, 647 - Tatuapé, São Paulo - SP, 03309-000, Brasil",
+            "location": {
+                "latitude": -23.5445039,
+                "longitude": -46.568984900000004
+            },
+            "displayName": {
+                "text": "EZvolt Charging Station",
+                "languageCode": "en"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 6.900000095367432,
+                        "count": 1,
+                        "availableCount": 0,
+                        "outOfServiceCount": 0,
+                        "availabilityLastUpdateTime": "2024-11-13T04:30:00Z"
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Serra de Bragança, 647 - Vila Gomes Cardim, São Paulo - SP, 03318-000 - Vila Gomes Cardim, São Paulo - SP, 03309, Brasil",
+            "location": {
+                "latitude": -23.544653699999998,
+                "longitude": -46.5689476
+            },
+            "displayName": {
+                "text": "Volvo Charging Station",
+                "languageCode": "en"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 22,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Serra de Bragança, 647 - Vila Gomes Cardim, São Paulo - SP, 03318-000, Brasil",
+            "location": {
+                "latitude": -23.544990000000002,
+                "longitude": -46.568874
+            },
+            "displayName": {
+                "text": "Eletroposto Pão de Açucar Tatuapé",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_CCS_COMBO_2",
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "Rua Serra da Bocaina, 470 - Belenzinho, São Paulo - SP, 03174-000, Brasil",
+            "location": {
+                "latitude": -23.5460471,
+                "longitude": -46.5856116
+            },
+            "displayName": {
+                "text": "Eletroposto Ufficio Majore",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "Rua Serra da Bocaina, 570 - Belém, São Paulo - SP, 03174-000, Brasil",
+            "location": {
+                "latitude": -23.546010799999998,
+                "longitude": -46.5857977
+            },
+            "displayName": {
+                "text": "Estação de carregamento para veículos elétricos",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 7,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "Av. Alcântara Machado, 3628 - Belém, São Paulo - SP, 03302-000, Brasil",
+            "location": {
+                "latitude": -23.5440504,
+                "longitude": -46.5901047
+            },
+            "displayName": {
+                "text": "Estação de carregamento Volvo",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "Av. Alcântara Machado, 3628, Pavilhão \"a\" - Quarta Parada, São Paulo, SP, Cep: - Quarta Parada, São Paulo - SP, 03302-000, Brasil",
+            "location": {
+                "latitude": -23.5440661,
+                "longitude": -46.5901085
+            },
+            "displayName": {
+                "text": "Estação de recarga da Volvo",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 7.400000095367432,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Apucarana, 1040 - Vila Gomes Cardim, São Paulo - SP, 03311-001, Brasil",
+            "location": {
+                "latitude": -23.5465551,
+                "longitude": -46.563652100000006
+            },
+            "displayName": {
+                "text": "Zletric Estação de Carregamento",
+                "languageCode": "pt"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 3.5,
+                        "count": 1
+                    }
+                ]
+            }
+        },
+        {
+            "formattedAddress": "R. Itapura, 1056 - Tatuape, São Paulo - SP, 03310-000 - Vila Gomes Cardim, São Paulo - SP, 03310, Brasil",
+            "location": {
+                "latitude": -23.5482169,
+                "longitude": -46.5658459
+            },
+            "displayName": {
+                "text": "BMW Charging Station",
+                "languageCode": "en"
+            },
+            "evChargeOptions": {
+                "connectorCount": 1,
+                "connectorAggregation": [
+                    {
+                        "type": "EV_CONNECTOR_TYPE_TYPE_2",
+                        "maxChargeRateKw": 22,
+                        "count": 1
+                    }
+                ]
+            }
+        }
+    ]
+}
