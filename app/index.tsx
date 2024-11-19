@@ -99,13 +99,13 @@ export default function HomeScreen() {
         </Text>
         {/* TODO: REMOVE DEBUG */}
         {/* sign with debug@debug */}
-        <Link
+        {/* <Link
           href={"/(tabs)/map"}
           style={{ color: "red" }}
           onPress={() => handleDebugLogin()}
         >
           Debug
-        </Link>
+        </Link> */}
       </View>
       <View style={styles.backgroundContainer}>
         <EletricCarHomeIMG width={320} height={168} />

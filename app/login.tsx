@@ -47,7 +47,7 @@ export default function Login() {
     } catch (error: any) {
       if (error.code === "auth/user-not-found") {
         setGeneralError("Usuário não encontrado.");
-      } else if (error.code === "auth/wrong-password") {
+      } else if (error.code === "auth/invalid-credential") {
         setGeneralError("Senha incorreta.");
       } else if (error.code === "auth/invalid-email") {
         setGeneralError("E-mail inválido.");
