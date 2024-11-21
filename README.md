@@ -11,8 +11,10 @@
     <summary><h3><strong>📑 Sumário</strong></h3>
         <ol>
             <li><a href="#sobre-o-projeto">Sobre o Projeto</a></li>
+            <li><a href="#equipe">Equipe</a></li>
             <li><a href="#instalacao">Instalação</a></li>
             <li><a href="#requisitos">Requisitos do Projeto de Mobile</a></li>
+            <li><a href="#entrega">Entrega</a></li>
         </ol>
     </summary>
 </details>
@@ -80,6 +82,6 @@
 **Pontuação Total:** 100 Pontos  
 _(80 pontos para funcionalidades + 20 pontos para os entregáveis adicionais)_
 
-
+<h2 id="entrega">📦 Entrega</h2>
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/JCD84hr8)
