@@ -27,7 +27,7 @@
 <h2 id="links">🔗 Links Úteis</h2>
 
 - [Organização no GitHub](https://github.com/GSEcoCharge)
-- [Repositório no GitHub](https://github.com/GSEcoCharge/IOT)
+- [Repositório no GitHub](https://github.com/leonardo-bragatti/2024-tdsa-global-solution-ecocharge)
 - [Vídeo no YouTube](https://youtu.be/SwBHRGw0KFw)
 
 <h2 id="equipe"> 📜 Equipe </h2>
@@ -39,6 +39,12 @@
 | Lucas Pinheiro de Melo           | 97707  | 2TDSS |
 | Marcos Henrique Garrido da Silva | 99578  | 2TDSA |
 | Mel Maia Rodrigues               | 98266  | 2TDSA |
+
+<h2 id="tecnologias">🛠️ Tecnologias Utilizadas</h2>
+
+- Mobile: [React Native](https://reactnative.dev/) e [Expo](https://docs.expo.dev/)
+- Backend: [Firebase Authentication](https://firebase.google.com/docs/auth?hl=pt-br) e [Cloud Firestore](https://firebase.google.com/docs/firestore)
+- API de Integração: [Google Places API (New)](https://developers.google.com/maps/documentation/places/web-service/op-overview)
 
 <h2 id="instalacao">🚀 Instalação</h2>
 
