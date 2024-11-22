@@ -1,3 +1,4 @@
+import TEXT_STYLES from "@/constants/TEXT_STYLES";
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
@@ -11,6 +12,7 @@ export default function LoadingScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    ...TEXT_STYLES.headline_small,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",

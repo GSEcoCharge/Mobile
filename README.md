@@ -11,6 +11,7 @@
     <summary><h3><strong>📑 Sumário</strong></h3>
         <ol>
             <li><a href="#sobre-o-projeto">Sobre o Projeto</a></li>
+            <li><a href="#links">Links Úteis</a></li>
             <li><a href="#equipe">Equipe</a></li>
             <li><a href="#instalacao">Instalação</a></li>
             <li><a href="#requisitos">Requisitos do Projeto de Mobile</a></li>
@@ -22,6 +23,12 @@
 <h2 id="sobre-o-projeto"> 📱 Sobre o Projeto </h2>
 
 **EcoCharge** é um projeto de aplicativo de transporte sustentável desenvolvido por estudantes da **FIAP** como parte da Global Solution. Este aplicativo é voltado para promover o uso de veículos elétricos (VEs) ao facilitar o acesso a pontos de carregamento e otimizar o planejamento de viagens. Nossa equipe de cinco integrantes está comprometida em criar uma experiência prática e intuitiva para motoristas de VEs, contribuindo com um futuro mais sustentável.
+
+<h2 id="links">🔗 Links Úteis</h2>
+
+- [Organização no GitHub](https://github.com/GSEcoCharge)
+- [Repositório no GitHub](https://github.com/GSEcoCharge/IOT)
+- [Vídeo no YouTube](https://youtu.be/SwBHRGw0KFw)
 
 <h2 id="equipe"> 📜 Equipe </h2>
 
@@ -78,9 +85,6 @@
 - [x] **Entrega do código compactado, link para o repositório GitHub e link do vídeo**
 
 ---
-
-**Pontuação Total:** 100 Pontos  
-_(80 pontos para funcionalidades + 20 pontos para os entregáveis adicionais)_
 
 <h2 id="entrega">📦 Entrega</h2>
 
