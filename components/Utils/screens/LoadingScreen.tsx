@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 export default function LoadingScreen() {
   return (
     <View style={styles.container}>
-      <Text>Loading...</Text>
+      <Text>Carregando...</Text>
     </View>
   );
 }

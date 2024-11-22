@@ -74,7 +74,7 @@
 
 ### Entregáveis Adicionais
 
-- [ ] **Gravação de vídeo demonstrando todas as funcionalidades do aplicativo** (20 Pontos)
+- [x] **Gravação de vídeo demonstrando todas as funcionalidades do aplicativo** (20 Pontos)
 - [x] **Entrega do código compactado, link para o repositório GitHub e link do vídeo**
 
 ---
